@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import ShopCategory from "./pages/ShopCategory";
 import Product from "./pages/Product";
 import Cart from "./pages/Cart";
-import LoginSignup from "./pages/loginSignup";
+import LoginSignup from "./pages/LoginSignup";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import mens_banner from "./assets/banner_mens.png";
