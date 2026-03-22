@@ -1,4 +1,3 @@
-/* ── NEW COLLECTIONS ── */
 .collection-container {
   width: 100%;
   background-color: #fff3f0;
@@ -28,4 +27,15 @@
   padding: 40px;
   width: min(1200px, 92vw);
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .collection-container { padding: 40px 0 60px; }
+  .col-h { font-size: 2rem; margin-left: 24px; margin-bottom: 28px; }
+  .collection-items { padding: 24px 16px; gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .col-h { font-size: 1.7rem; margin-left: 16px; }
+  .collection-items { padding: 20px 12px; }
 }

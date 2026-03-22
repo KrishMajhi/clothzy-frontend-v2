@@ -1,4 +1,3 @@
-/* ── FOOTER ── */
 .footer-container {
   background: linear-gradient(135deg, #4b6cb7, #182848);
   color: #e4f1fe;
@@ -17,9 +16,7 @@
   justify-content: space-between;
 }
 
-.footer-brand {
-  flex: 1 1 260px;
-}
+.footer-brand { flex: 1 1 240px; }
 
 .footer-logo {
   font-size: 2.2rem;
@@ -29,31 +26,12 @@
   margin-bottom: 10px;
 }
 
-.footer-brand p {
-  font-size: 0.95rem;
-  color: #c8e6ff;
-  line-height: 1.6;
-}
+.footer-brand p { font-size: 0.95rem; color: #c8e6ff; line-height: 1.6; }
 
-.footer-links {
-  flex: 1 1 150px;
-}
-
-.footer-links h4 {
-  font-size: 1.1rem;
-  color: #fff;
-  margin-bottom: 14px;
-}
-
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links ul li {
-  margin-bottom: 10px;
-}
-
+.footer-links { flex: 1 1 140px; }
+.footer-links h4 { font-size: 1.1rem; color: #fff; margin-bottom: 14px; }
+.footer-links ul { list-style: none; padding: 0; }
+.footer-links ul li { margin-bottom: 10px; }
 .footer-links ul li a {
   color: #b0dffb;
   text-decoration: none;
@@ -61,20 +39,10 @@
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }
+.footer-links ul li a:hover { color: #00d4ff; }
 
-.footer-links ul li a:hover {
-  color: #00d4ff;
-}
-
-.footer-social {
-  flex: 1 1 150px;
-}
-
-.footer-social h4 {
-  font-size: 1.1rem;
-  color: #fff;
-  margin-bottom: 14px;
-}
+.footer-social { flex: 1 1 140px; }
+.footer-social h4 { font-size: 1.1rem; color: #fff; margin-bottom: 14px; }
 
 .social-icons a {
   display: inline-block;
@@ -83,8 +51,7 @@
 }
 
 .social-icon-img {
-  width: 28px;
-  height: 28px;
+  width: 28px; height: 28px;
   filter: brightness(0.8);
   transition: filter 0.3s ease, transform 0.3s ease;
 }
@@ -96,28 +63,22 @@
 
 .footer-bottom {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 40px auto 0;
   padding: 20px 48px 0;
-  margin-top: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(255,255,255,0.15);
   text-align: center;
   font-size: 0.85rem;
   color: #90b8d8;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .footer-wrapper {
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 0 24px;
+    gap: 28px;
   }
-
-  .footer-links,
-  .footer-social,
-  .footer-brand {
-    flex: unset;
-    width: 100%;
-  }
+  .footer-brand, .footer-links, .footer-social { flex: unset; width: 100%; }
+  .footer-bottom { padding: 20px 24px 0; }
 }

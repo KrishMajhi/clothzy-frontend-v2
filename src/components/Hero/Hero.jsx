@@ -2,7 +2,6 @@ import React from "react";
 import "./Hero.css";
 // import heroImg from "../assets/product_32.png";
 import heroImg from "../../assets/hero_image.png";
-// import heroImg from
 // import heroImg from "../../";
 
 function Hero() {

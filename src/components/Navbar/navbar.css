@@ -1,4 +1,3 @@
-/* ── NAVBAR ── */
 .mainnav {
   position: fixed;
   top: 16px;
@@ -24,6 +23,12 @@
   gap: 10px;
 }
 
+.logo-and-name img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
 .company-name {
   color: #FF8C00;
   font-weight: 700;
@@ -32,7 +37,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Nav items list */
 .navitems-container {
   display: flex;
   align-items: center;
@@ -46,10 +50,11 @@
   font-size: 17px;
   color: hsl(325deg 10% 55%);
   text-decoration: none;
-  padding: 4px 6px;
+  padding: 4px 8px;
   font-family: 'DM Sans', sans-serif;
   transition: color 0.3s ease;
   user-select: none;
+  white-space: nowrap;
 }
 
 .navitems::after {
@@ -65,25 +70,16 @@
   transition: width 0.4s ease;
 }
 
-.navitems:hover {
-  color: #111;
-}
+.navitems:hover { color: #111; }
+.navitems:hover::after { width: 100%; }
 
-.navitems:hover::after {
-  width: 100%;
-}
-
-.navitems.active {
-  color: #111;
-}
-
+.navitems.active { color: #111; }
 .navitems.active::after {
   width: 100%;
   background: #00ffff;
   box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
 }
 
-/* Nav buttons */
 .nav-btn {
   display: flex;
   align-items: center;
@@ -100,6 +96,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(245, 222, 179, 0.5);
+  white-space: nowrap;
 }
 
 .loginbtn:hover {
@@ -110,10 +107,8 @@
 
 .loginbtn:active {
   transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(222, 184, 135, 0.5);
 }
 
-/* Cart icon */
 .carticon {
   position: relative;
   cursor: pointer;
@@ -144,7 +139,6 @@
   transform: rotate(-9deg);
 }
 
-/* Drag-to-cart drop zone */
 .cart-drop-zone {
   padding: 8px;
   border-radius: 12px;
@@ -156,4 +150,72 @@
 
 .cart-drop-zone.drag-over {
   background-color: rgba(0, 255, 0, 0.15);
+}
+
+/* ── Hamburger (mobile) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* ── Mobile nav drawer ── */
+@media (max-width: 768px) {
+  .mainnav {
+    top: 10px;
+    padding: 12px 20px;
+    flex-wrap: wrap;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navitems-container {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 12px 0 4px;
+    gap: 4px;
+  }
+
+  .navitems-container.open {
+    display: flex;
+  }
+
+  .navitems {
+    font-size: 16px;
+    padding: 8px 4px;
+    width: 100%;
+  }
+
+  .nav-btn {
+    gap: 10px;
+  }
+
+  .loginbtn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .company-name {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .company-name { font-size: 1.2rem; }
 }

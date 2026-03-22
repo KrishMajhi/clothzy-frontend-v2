@@ -1,88 +1,91 @@
 import React, { useState } from "react";
+import "./css/Product.css";
 import { useParams } from "react-router-dom";
 import { useShop } from "../Context/ShopContext";
-import "./css/Product.css";
 
 function Product() {
-  const { all_products } = useShop();
   const { productid } = useParams();
-  const productIdNumber = Number(productid);
+  const { all_products, popular_data, collection_products, addToCart, cartItems } = useShop();
+
+  // Find product across all data sources
+  const allItems = [...(all_products || []), ...(popular_data || []), ...(collection_products || [])];
+  const product = allItems.find((p) => p.id === Number(productid));
 
   const [selectedSize, setSelectedSize] = useState(null);
-  const myproduct = all_products.filter((item) => item.id === productIdNumber);
+  const [mainImg, setMainImg] = useState(null);
 
-  if (myproduct.length === 0) {
-    return <div className="product-not-found">Product not found</div>;
+  const isInCart = cartItems.some((item) => item.id === Number(productid));
+
+  const handleAddToCart = () => {
+    if (!product) return;
+    addToCart({
+      id: product.id,
+      image: product.image,
+      name: product.name,
+      description: product.description || "",
+      product: "all_product",
+      qty: 1,
+      pTotal: Number(product.new_price),
+      Price: product.new_price,
+    });
+  };
+
+  if (!product) {
+    return (
+      <div style={{ paddingTop: "120px", textAlign: "center", fontSize: "1.4rem", color: "#888" }}>
+        Product not found.
+      </div>
+    );
   }
 
-  const {
-    image,
-    category,
-    name,
-    new_price,
-    old_price,
-    description = "No description available.",
-  } = myproduct[0];
-
-  console.log(myproduct.length);
-  
-  const multipliers = {
-    S: 1,
-    M: 1.1,
-    L: 1.2,
-    XL: 1.3,
-    XXL: 1.4,
-  };
-
-  const calculatedPrice = selectedSize
-    ? (new_price * multipliers[selectedSize]).toFixed(2)
-    : null;
-
-  const handleSizeClick = (size) => {
-    if (selectedSize == size) {
-      setSelectedSize(null);
-    } else {
-      setSelectedSize(size);
-    }
-  };
+  const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
 
   return (
     <div className="product-page">
+      {/* Thumbnail gallery */}
       <div className="product-gallery">
-        <img src={image} alt={name} className="thumb-img" />
-        <img src={image} alt={name} className="thumb-img" />
-        <img src={image} alt={name} className="thumb-img" />
+        {[product.image, product.image, product.image].map((img, i) => (
+          <img
+            key={i}
+            src={img}
+            alt={`thumb-${i}`}
+            className="thumb-img"
+            onClick={() => setMainImg(img)}
+          />
+        ))}
       </div>
 
+      {/* Main image */}
       <div className="product-main-image">
-        <img src={image} alt={name} />
+        <img src={mainImg || product.image} alt={product.name} />
       </div>
 
+      {/* Product info */}
       <div className="product-info">
-        <h1 className="pr-h">{name}</h1>
-        <div className="rating">⭐⭐⭐⭐☆ (122)</div>
+        <h1 className="pr-h">{product.name}</h1>
 
-        <div className="price-section">
-          {old_price && <span className="old-price">${old_price}</span>}
-          {selectedSize ? (
-            <span className="new-price">${calculatedPrice}</span>
-          ) : (
-            <span className="new-price">{new_price}</span>
-          )}
+        <div className="rating">
+          ★★★★☆ <span style={{ color: "#999", fontSize: "14px" }}>(122 reviews)</span>
         </div>
 
-        <p className="product-description">{description}</p>
+        <div className="price-section">
+          <span className="old-price">${product.old_price}</span>
+          <span className="new-price">${product.new_price}</span>
+        </div>
+
+        <p className="product-description">
+          {product.description ||
+            "A premium quality item crafted for style and comfort. Perfect for everyday wear."}
+        </p>
 
         <div className="size-select">
           <span>Select Size:</span>
-          {["S", "M", "L", "XL", "XXL"].map((size) => (
+          {sizes.map((size) => (
             <button
               key={size}
-              onClick={() => handleSizeClick(size)}
+              onClick={() => setSelectedSize(size)}
               style={{
-                background: selectedSize === size ? "black" : "yellow",
-                color: selectedSize === size ? "white" : "black",
-                marginRight: "10px",
+                background: selectedSize === size ? "#7f2323" : "#000",
               }}
             >
               {size}
@@ -90,14 +93,14 @@ function Product() {
           ))}
         </div>
 
-        <button className="add-to-cart" disabled={!selectedSize}>
-          Add to Cart
+        <button className="add-to-cart" onClick={handleAddToCart}>
+          {isInCart ? "✓ Added to Cart" : "Add to Cart"}
         </button>
 
-        <p className="meta">
-          <strong>Category:</strong> {category} <br />
-          <strong>Tags:</strong> Modern, Latest
-        </p>
+        <div className="meta">
+          <p>Category: {product.category || "Clothing"}</p>
+          <p>Tags: Modern, Latest</p>
+        </div>
       </div>
     </div>
   );
