@@ -28,26 +28,23 @@ const offerSlides = [
 
 function Offer() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false); 
+  const [isPaused, setIsPaused] = useState(false);
   useEffect(() => {
     if (!isPaused) {
       const interval = setInterval(() => {
         setCurrentSlide((prev) => (prev + 1) % offerSlides.length);
-      }, 3000); 
+      }, 3000);
 
       return () => clearInterval(interval);
     }
-  }, [isPaused]); 
+  }, [isPaused]);
 
-  
-  
   const togglePause = () => {
     setIsPaused(!isPaused);
   };
 
-  useEffect(() => {
-    console.log("homeEEEEEEEEEEEEEEEEE");
-  }, [])
+  // useEffect(() => {
+  // }, [])
   return (
     <div className="offer-container">
       <div className="main-section">

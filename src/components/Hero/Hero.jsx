@@ -5,7 +5,6 @@ import heroImg from "../../assets/hero_image.png";
 // import heroImg from "../../";
 
 function Hero() {
-  console.log("Hero is rendering");
 
   return (
     <div className="main-container-hero">

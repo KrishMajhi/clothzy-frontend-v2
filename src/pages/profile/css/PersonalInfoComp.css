@@ -1,0 +1,397 @@
+/* PersonalInfoComp.css */
+
+.pi-root {
+  --c-accent:   #e8a87c;
+  --c-accent2:  #c97c5d;
+  --c-text:     #f5f0ea;
+  --c-muted:    rgba(245,240,234,.45);
+  --c-dimmed:   rgba(245,240,234,.22);
+  --c-glass:    rgba(255,255,255,.07);
+  --c-border:   rgba(255,255,255,.13);
+  --ff-display: 'Cormorant Garamond', serif;
+  --ff-body:    'DM Sans', sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  animation: pi-in .4s cubic-bezier(.4,0,.2,1) both;
+}
+
+@keyframes pi-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── heading ─────────────────────────────── */
+.pi-heading { display: flex; flex-direction: column; gap: 4px; }
+
+.pi-heading-tag {
+  font-family: var(--ff-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
+
+.pi-title {
+  font-family: var(--ff-display);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--c-text);
+  line-height: 1.05;
+}
+
+.pi-desc {
+  font-size: 13px;
+  color: var(--c-muted);
+  margin-top: 2px;
+}
+
+/* ─── hero card ───────────────────────────── */
+.pi-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  background: var(--c-glass);
+  border: 1px solid var(--c-border);
+  border-radius: 18px;
+  padding: 24px 28px;
+  overflow: hidden;
+}
+
+.pi-hero-deco { position: absolute; inset: 0; pointer-events: none; }
+.pi-hero-deco span {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, rgba(232,168,124,.18), transparent);
+}
+.pi-hero-deco span:nth-child(1) { top: 0;    left: 0; right: 0; height: 1px; }
+.pi-hero-deco span:nth-child(2) { bottom: 0; left: 0; right: 0; height: 1px; }
+.pi-hero-deco span:nth-child(3) {
+  top: 0; bottom: 0; right: 0; width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(232,168,124,.18), transparent);
+}
+
+.pi-avatar-wrap { position: relative; flex-shrink: 0; }
+
+.pi-avatar {
+  width: 76px; height: 76px;
+  background: linear-gradient(135deg, var(--c-accent) 0%, var(--c-accent2) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  animation: pi-pulse 3s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.pi-avatar-ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(232,168,124,.3);
+}
+
+@keyframes pi-pulse {
+  0%,100% { box-shadow: 0 0 0 0    rgba(232,168,124,.4); }
+  50%      { box-shadow: 0 0 0 10px rgba(232,168,124,.0); }
+}
+
+.pi-hero-body { display: flex; flex-direction: column; gap: 5px; }
+
+.pi-hero-name {
+  font-family: var(--ff-display);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--c-text);
+  line-height: 1;
+}
+
+.pi-hero-email { font-size: 13px; color: var(--c-muted); }
+
+.pi-role-pill {
+  display: inline-block;
+  background: rgba(232,168,124,.15);
+  border: 1px solid rgba(232,168,124,.3);
+  color: var(--c-accent);
+  font-family: var(--ff-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 3px 11px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+/* ─── section block (label + content) ─────── */
+.pi-section-block { display: flex; flex-direction: column; gap: 10px; }
+
+.pi-section-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ff-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--c-dimmed);
+}
+
+.pi-section-label-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--c-dimmed);
+  flex-shrink: 0;
+}
+
+.pi-dot-amber { background: var(--c-accent); }
+
+/* ─── fields list ─────────────────────────── */
+.pi-fields {
+  display: flex;
+  flex-direction: column;
+  background: var(--c-glass);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.pi-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 22px;
+  transition: background .2s ease;
+}
+
+.pi-field:hover { background: rgba(255,255,255,.05); }
+
+.pi-field:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 22px; right: 22px;
+  height: 1px;
+  background: var(--c-border);
+}
+
+.pi-field-icon {
+  font-size: 15px;
+  color: var(--c-accent);
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  opacity: .75;
+}
+
+.pi-field-body { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+
+.pi-field-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--c-dimmed);
+}
+
+.pi-field-value {
+  font-size: 15px;
+  color: var(--c-text);
+  font-weight: 400;
+}
+
+.pi-field-empty {
+  color: var(--c-muted);
+  font-style: italic;
+  font-size: 13px;
+}
+
+/* ─── edit input ──────────────────────────── */
+.pi-field-input {
+  width: 100% !important;
+  max-width: 320px !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(232, 168, 124, 0.45) !important;
+  border-radius: 8px !important;
+  padding: 7px 12px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #f5f0ea !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+  caret-color: #e8a87c;
+}
+
+.pi-field-input::placeholder {
+  color: rgba(245, 240, 234, 0.35) !important;
+}
+
+.pi-field-input:focus {
+  border-color: #e8a87c !important;
+  background: rgba(232, 168, 124, 0.08) !important;
+  box-shadow: 0 0 0 3px rgba(232, 168, 124, 0.14) !important;
+  outline: none !important;
+}
+
+
+/* ─── actions ─────────────────────────────── */
+.pi-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pi-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent2));
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-family: var(--ff-body);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+  box-shadow: 0 4px 18px rgba(232,168,124,.3);
+  letter-spacing: .02em;
+}
+.pi-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(232,168,124,.45);
+}
+.pi-btn-primary:active { transform: translateY(0); }
+
+.pi-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: transparent;
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  color: var(--c-muted);
+  font-family: var(--ff-body);
+  font-size: 14px;
+  cursor: not-allowed;
+  letter-spacing: .02em;
+}
+
+/* ─── address card ────────────────────────── */
+.pi-address-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* frosted coming-soon overlay */
+.pi-address-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(26, 15, 46, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  text-align: center;
+  padding: 20px;
+}
+
+.pi-address-overlay-icon { font-size: 28px; line-height: 1; }
+
+.pi-address-overlay-text {
+  font-size: 13px;
+  color: var(--c-muted);
+  max-width: 200px;
+  line-height: 1.5;
+}
+
+.pi-address-overlay-badge {
+  display: inline-block;
+  background: rgba(232,168,124,.13);
+  border: 1px solid rgba(232,168,124,.28);
+  color: var(--c-accent);
+  font-family: var(--ff-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-top: 2px;
+}
+
+/* dimmed fields beneath overlay */
+.pi-fields-dimmed {
+  filter: blur(1.5px);
+  pointer-events: none;
+  user-select: none;
+  opacity: .45;
+}
+
+/* ─── hero phone ──────────────────────────── */
+.pi-hero-phone {
+  font-size: 12px;
+  color: var(--c-muted);
+  letter-spacing: .02em;
+}
+
+/* ─── editable hint ───────────────────────── */
+.pi-field-editable-hint {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--c-dimmed);
+  border: 1px solid var(--c-border);
+  border-radius: 6px;
+  padding: 2px 7px;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.pi-field:hover .pi-field-editable-hint {
+  opacity: 1;
+}
+
+/* ─── cancel button ───────────────────────── */
+.pi-btn-cancel {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  background: transparent;
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  color: var(--c-muted);
+  font-family: var(--ff-body);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+  letter-spacing: .02em;
+}
+.pi-btn-cancel:hover {
+  border-color: rgba(255,255,255,.28);
+  color: var(--c-text);
+}

@@ -1,6 +1,5 @@
-import React from "react";
+  import React from "react";
 
-import Cart from "./Cart";
 import Hero from "../components/Hero/Hero";
 import Items from "../components/items/Items";
 import Popular from "../components/Popular/Popular";

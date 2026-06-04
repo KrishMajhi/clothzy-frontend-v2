@@ -7,7 +7,6 @@ import pinterestIcon from "../../assets/pintester_icon.png";
 import logopic from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 
-
 function Footer() {
   return (
     <footer className="footer-container">
@@ -21,92 +20,52 @@ function Footer() {
         <div className="footer-links">
           <h4>Shop</h4>
           <ul>
-            <Link to={"/men"}>
-              <a >Men's Clothing</a>
-            </Link>
-            <li>
-              <a href="/womens">Women's Clothing</a>
-            </li>
-            <li>
-              <a href="/new">New Arrivals</a>
-            </li>
-            <li>
-              <a href="/sale">Sale</a>
-            </li>
+            <Link to={"/men"}>Men's Clothing</Link>
+            <li>men's Clothing</li>
+            <li>rrivals</li>
+            <li></li>
           </ul>
         </div>
 
         <div className="footer-links">
           <h4>Customer Care</h4>
           <ul>
-            <li>
-              <a href="/faq">FAQ</a>
-            </li>
-            <li>
-              <a href="/shipping">Shipping & Returns</a>
-            </li>
-            <li>
-              <a href="/contact">Contact Us</a>
-            </li>
-            <li>
-              <a href="/privacy">Privacy Policy</a>
-            </li>
+            <li></li>
+            <li>Shipping & Returns</li>
+            <li>Contact Us</li>
+            <li>Privacy Policy</li>
           </ul>
         </div>
 
-        <div className="footer-social">
+        {/* <div className="footer-social">
           <h4>Follow Us</h4>
           <div className="social-icons">
-            <a
-              href="https://facebook.com/yourpage"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              <img
-                src={facebookIcon}
-                alt="Facebook"
-                className="social-icon-img"
-              />
-            </a>
-            <a
-              href="https://instagram.com/yourpage"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              <img
-                src={instagramIcon}
-                alt="Instagram"
-                className="social-icon-img"
-              />
-            </a>
-            <a
-              href="https://twitter.com/yourpage"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter"
-            >
-              <img
-                src={twitterIcon}
-                alt="Twitter"
-                className="social-icon-img"
-              />
-            </a>
-            <a
-              href="https://pinterest.com/yourpage"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Pinterest"
-            >
-              <img
-                src={pinterestIcon}
-                alt="Pinterest"
-                className="social-icon-img"
-              />
-            </a>
+            cebook.com/yourpage" target="_blank" rel="noopener noreferrer"
+            aria-label="Facebook"
+            <img
+              src={facebookIcon}
+              alt="Facebook"
+              className="social-icon-img"
+            />
+            stagram.com/yourpage" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram"
+            <img
+              src={instagramIcon}
+              alt="Instagram"
+              className="social-icon-img"
+            />
+            itter.com/yourpage" target="_blank" rel="noopener noreferrer"
+            aria-label="Twitter"
+            <img src={twitterIcon} alt="Twitter" className="social-icon-img" />
+            nterest.com/yourpage" target="_blank" rel="noopener noreferrer"
+            aria-label="Pinterest"
+            <img
+              src={pinterestIcon}
+              alt="Pinterest"
+              className="social-icon-img"
+            />
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="footer-bottom">

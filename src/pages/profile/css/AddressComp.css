@@ -1,0 +1,286 @@
+/* AddressComp.css */
+
+.addr-root {
+  --c-accent:   #e8a87c;
+  --c-accent2:  #c97c5d;
+  --c-text:     #f5f0ea;
+  --c-muted:    rgba(245,240,234,.45);
+  --c-dimmed:   rgba(245,240,234,.22);
+  --c-glass:    rgba(255,255,255,.07);
+  --c-border:   rgba(255,255,255,.13);
+  --ff-display: 'Cormorant Garamond', serif;
+  --ff-body:    'DM Sans', sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: addr-in .4s cubic-bezier(.4,0,.2,1) both;
+}
+
+@keyframes addr-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── heading ─────────────────────────────── */
+.addr-heading { display: flex; flex-direction: column; gap: 4px; }
+
+.addr-heading-tag {
+  font-family: var(--ff-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
+
+.addr-title {
+  font-family: var(--ff-display);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--c-text);
+  line-height: 1.05;
+}
+
+.addr-desc {
+  font-size: 13px;
+  color: var(--c-muted);
+  margin-top: 2px;
+}
+
+/* ─── empty banner ────────────────────────── */
+.addr-empty-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(232,168,124,.07);
+  border: 1px dashed rgba(232,168,124,.35);
+  border-radius: 16px;
+  padding: 20px 24px;
+}
+
+.addr-empty-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.3));
+}
+
+.addr-empty-body { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+
+.addr-empty-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--c-text);
+}
+
+.addr-empty-sub {
+  font-size: 12px;
+  color: var(--c-muted);
+}
+
+.addr-add-btn {
+  flex-shrink: 0;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent2));
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-family: var(--ff-body);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 14px rgba(232,168,124,.3);
+  white-space: nowrap;
+}
+.addr-add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(232,168,124,.45);
+}
+
+/* ─── section block ───────────────────────── */
+.addr-section-block { display: flex; flex-direction: column; gap: 10px; }
+
+.addr-section-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ff-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--c-dimmed);
+}
+
+.addr-section-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  flex-shrink: 0;
+}
+
+/* ─── fields ──────────────────────────────── */
+.addr-fields {
+  display: flex;
+  flex-direction: column;
+  background: var(--c-glass);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.addr-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 22px;
+  transition: background .2s;
+}
+
+.addr-field:hover { background: rgba(255,255,255,.04); }
+
+.addr-field:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 22px; right: 22px;
+  height: 1px;
+  background: var(--c-border);
+}
+
+.addr-field-icon {
+  font-size: 15px;
+  color: var(--c-accent);
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  opacity: .75;
+}
+
+.addr-field-body { display: flex; flex-direction: column; gap: 3px; flex: 1; }
+
+.addr-field-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--c-dimmed);
+}
+
+.addr-field-value {
+  font-size: 15px;
+  color: var(--c-text);
+  font-weight: 400;
+}
+
+.addr-field-empty {
+  color: var(--c-muted);
+  font-style: italic;
+  font-size: 13px;
+}
+
+/* ─── input ───────────────────────────────── */
+.addr-field-input {
+  width: 100% !important;
+  max-width: 380px !important;
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(232,168,124,.45) !important;
+  border-radius: 8px !important;
+  padding: 7px 12px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #f5f0ea !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+  caret-color: #e8a87c;
+}
+
+.addr-field-input::placeholder {
+  color: rgba(245,240,234,.3) !important;
+}
+
+.addr-field-input:focus {
+  border-color: #e8a87c !important;
+  background: rgba(232,168,124,.08) !important;
+  box-shadow: 0 0 0 3px rgba(232,168,124,.14) !important;
+}
+
+/* ─── actions ─────────────────────────────── */
+.addr-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.addr-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent2));
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-family: var(--ff-body);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 18px rgba(232,168,124,.3);
+  letter-spacing: .02em;
+}
+.addr-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(232,168,124,.45);
+}
+.addr-btn-primary:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+}
+
+.addr-btn-cancel {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  background: transparent;
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  color: var(--c-muted);
+  font-family: var(--ff-body);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+  letter-spacing: .02em;
+}
+.addr-btn-cancel:hover {
+  border-color: rgba(255,255,255,.28);
+  color: var(--c-text);
+}
+
+/* ─── map placeholder ─────────────────────── */
+.addr-map-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--c-glass);
+  border: 1px dashed var(--c-border);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  color: var(--c-muted);
+  font-size: 13px;
+}
+
+.addr-map-icon {
+  font-size: 32px;
+  opacity: .5;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.3));
+}
