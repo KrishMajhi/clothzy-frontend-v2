@@ -21,9 +21,9 @@ function Items({
 
   const isincart = cartItems.some(
     (item) =>
-      item.product_id === productid &&
-      item.selected_size === selectedSize &&
-      item.selected_color === selectedColor,
+      item.product_id === id &&
+      item.selected_size === sizes[0] &&
+      item.selected_color === colors[0],
   );
   const handleCartClick = (itemId) => {
     let item = null;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./../css/CartPage.css";
 
@@ -35,6 +35,7 @@ const calculateTotals = (cartItems) => {
 
 const CartPage = () => {
   const { cartItems, cartLoading, removeFromCart, updateCartItem } = useCart();
+  const [shippingAllowedLimit, setshippingAllowedLimit] = useState(500);
   const toast = useToast();
 
   const totals = calculateTotals(cartItems);
@@ -44,10 +45,24 @@ const CartPage = () => {
     toast.show("Item removed from cart", "🗑️");
   };
 
+  // const handleUpdateQty = async (cart_itemID, delta) => {
+  //   const item = cartItems.find((i) => i.cart_id === cart_itemID);
+  //   if (!item) return;
+  //   const newQty = Math.max(1, item.quantity + delta);
+  //   await updateCartItem(cart_itemID, newQty);
+  // };
+
+  const MAX_QTY = 5;
+
   const handleUpdateQty = async (cart_itemID, delta) => {
     const item = cartItems.find((i) => i.cart_id === cart_itemID);
     if (!item) return;
-    const newQty = Math.max(1, item.quantity + delta);
+
+    const maxAllowed = item.max_qty_allowed ?? MAX_QTY; // future-proof field
+    const newQty = item.quantity + delta;
+
+    if (newQty < 1 || newQty > maxAllowed) return; // hard block, no API call
+
     await updateCartItem(cart_itemID, newQty);
   };
 
@@ -112,7 +127,21 @@ const CartPage = () => {
               </div>
             </div>
             <div className="header-tags">
-              <span className="header-tag">✓ Free shipping unlocked</span>
+              <span
+                className="header-tag"
+                style={{
+                  transition: "opacity 0.4s ease, transform 0.4s ease",
+                  opacity: totals.subtotal > shippingAllowedLimit ? 1 : 0,
+                  transform:
+                    totals.subtotal > shippingAllowedLimit
+                      ? "translateY(0)"
+                      : "translateY(12px)",
+                  pointerEvents:
+                    totals.subtotal > shippingAllowedLimit ? "auto" : "none",
+                }}
+              >
+                ✓ Free shipping unlocked
+              </span>
               <span className="header-tag">Free returns</span>
             </div>
           </div>
@@ -135,6 +164,8 @@ const CartPage = () => {
           onCheckout={handleCheckout}
           onContinueShopping={handleContinueShopping}
           onPromoApply={handlePromoApply}
+          subtotal={totals.subtotal}
+          shippingAllowedLimit={shippingAllowedLimit}
         />
       </div>
 

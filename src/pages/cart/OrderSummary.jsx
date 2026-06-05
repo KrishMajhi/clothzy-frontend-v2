@@ -8,21 +8,34 @@ const TRUST_BADGES = [
   { icon: "💳", text: "All Cards Accepted" },
 ];
 
-const OrderSummary = ({ totals, onCheckout, onContinueShopping, onPromoApply }) => {
+const OrderSummary = ({
+  totals,
+  onCheckout,
+  onContinueShopping,
+  onPromoApply,
+  subtotal,
+  shippingAllowedLimit,
+}) => {
   return (
     <div className="cart-sidebar">
       <div className="summary-box">
         <h2 className="summary-title">Order Summary</h2>
 
         <div className="summary-row">
-          <span>Subtotal (<span id="item-count">{totals.itemCount}</span> items)</span>
-          <span className="summary-value" id="subtotal-val">${totals.subtotal.toFixed(0)}</span>
+          <span>
+            Subtotal (<span id="item-count">{totals.itemCount}</span> items)
+          </span>
+          <span className="summary-value" id="subtotal-val">
+            ${totals.subtotal.toFixed(0)}
+          </span>
         </div>
 
         {totals.savings > 0 && (
           <div className="summary-row discount">
             <span>You Save</span>
-            <span className="summary-value" id="discount-val">−${totals.savings.toFixed(0)}</span>
+            <span className="summary-value" id="discount-val">
+              −${totals.savings.toFixed(0)}
+            </span>
           </div>
         )}
 
@@ -33,20 +46,28 @@ const OrderSummary = ({ totals, onCheckout, onContinueShopping, onPromoApply }) 
 
         <div className="summary-row">
           <span>Tax (est. 8%)</span>
-          <span className="summary-value" id="tax-val">${totals.tax.toFixed(0)}</span>
+          <span className="summary-value" id="tax-val">
+            ${totals.tax.toFixed(0)}
+          </span>
         </div>
 
         <div className="summary-row total">
           <span>Total</span>
-          <span className="summary-value" id="total-val">${totals.total.toFixed(0)}</span>
+          <span className="summary-value" id="total-val">
+            ${totals.total.toFixed(0)}
+          </span>
         </div>
 
         {/* Shipping progress */}
         <div className="shipping-progress-wrap">
           <div className="shipping-progress-label">
-            <span>🚚 You've unlocked free shipping!</span>
+            {subtotal > shippingAllowedLimit ? (
+              <span>🚚 You've unlocked free shipping!</span>
+            ) : (
+              <span>shipping is not free</span>
+            )}
             <span style={{ color: "var(--green)", fontWeight: "600" }}>
-              ${totals.subtotal.toFixed(0)} / $100
+              ${totals.subtotal.toFixed(0)} / {`$${shippingAllowedLimit}`}
             </span>
           </div>
           <div className="shipping-progress-bar">
