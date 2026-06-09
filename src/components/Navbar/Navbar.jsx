@@ -20,6 +20,7 @@ function Navbar() {
   const { cartItems, addToCart } = useCart();
   const { user, logout } = useAuth();
   const location = useLocation();
+  if (location.pathname === "/checkout") return null;
 
   /* ── UI state ─────────────────────────────────────── */
   const [profileOpen, setProfileOpen] = useState(false);

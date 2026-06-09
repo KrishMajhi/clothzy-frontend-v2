@@ -11,6 +11,7 @@ import Errorcomp from "./components/Errorcomp/comp";
 import Profile from "./pages/profile/Profile";
 
 import CartPage from "./pages/cart/CartPage.jsx";
+import CheckoutPage from "./pages/checkout/CheckoutPage.jsx";
 // ✅ Unsplash direct URLs — no imports needed
 // const mens_banner =
 // "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=1100&h=300&fit=crop";
@@ -47,6 +48,7 @@ function App() {
             <Route path=":productid" />
           </Route>
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/login" element={<LoginSignup />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>

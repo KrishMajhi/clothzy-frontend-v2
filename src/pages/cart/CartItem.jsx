@@ -1,5 +1,5 @@
 import React from "react";
-
+import { COLOR_PALETTE } from "../../assets/constants";
 const StarRating = ({ rating, review_count }) => {
   const fullStars = Math.floor(rating);
   return (
@@ -31,6 +31,10 @@ const CartItem = ({ item, onUpdateQty, onRemove, onSaveForLater }) => {
         ((item.original_price - item.price) / item.original_price) * 100,
       )
     : null;
+  let colorhex =
+    COLOR_PALETTE.find(
+      (e) => e.name.toLowerCase() === item.selected_color.toLowerCase(),
+    )?.hex || "#ccc";
 
   return (
     <div
@@ -134,7 +138,27 @@ const CartItem = ({ item, onUpdateQty, onRemove, onSaveForLater }) => {
           </div>
           <div className="option-pill">
             <span className="option-label">Color</span>
-            <span className="option-value">{item.selected_color}</span>
+
+            <span
+              className="option-value"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+              }}
+            >
+              <span
+                style={{
+                  height: "10px",
+                  width: "10px",
+                  borderRadius: "50%",
+                  background: colorhex,
+                  display: "inline-block",
+                }}
+              />
+
+              {item.selected_color}
+            </span>
           </div>
         </div>
 
