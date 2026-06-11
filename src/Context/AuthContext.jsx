@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { API_BASE_URL } from "../config/api";
 
 const AuthContext = createContext();
 
@@ -21,7 +22,7 @@ export function AuthProvider({ children }) {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/v0.0.24/user/me",
+        `${API_BASE_URL}/api/v0.0.24/user/me`,
         {
           method: "GET",
 
@@ -63,7 +64,7 @@ export function AuthProvider({ children }) {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/v0.0.24/user/update_profile",
+        `${API_BASE_URL}/api/v0.0.24/user/update_profile`,
         {
           method: "PATCH",
 
@@ -124,7 +125,7 @@ export function AuthProvider({ children }) {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/v0.0.24/user/update_password/",
+        `${API_BASE_URL}/api/v0.0.24/user/update_password/`,
         {
           method: "PATCH",
 

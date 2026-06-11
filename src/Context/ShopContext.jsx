@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-
+import { API_BASE_URL } from "../config/api";
 export const ShopContext = createContext(null);
 
 const ShopContextProvider = ({ children }) => {
@@ -52,6 +52,7 @@ const ShopContextProvider = ({ children }) => {
   // =====================
   const fetchFilterMetadata = async (gender_category) => {
     setMetadataLoading(true);
+    
     try {
       if (!gender_category) {
         console.warn("fetchFilterMetadata: gender_category is required");
@@ -59,7 +60,7 @@ const ShopContextProvider = ({ children }) => {
       }
 
       const url = new URL(
-        "http://127.0.0.1:8000/api/v0.0.24/products/filter_metadata",
+        `${API_BASE_URL}/api/v0.0.24/products/filter_metadata`,
       );
       url.searchParams.append("gender", gender_category);
 
@@ -97,7 +98,7 @@ const ShopContextProvider = ({ children }) => {
 
     try {
       const raw = await fetch(
-        `http://127.0.0.1:8000/api/v0.0.24/products/all_products?${queryParams}`,
+        `${API_BASE_URL}/api/v0.0.24/products/all_products?${queryParams}`,
         { method: "GET" },
       );
 
@@ -129,7 +130,7 @@ const ShopContextProvider = ({ children }) => {
   const fetchProductByID = async (product_id) => {
     try {
       const raw = await fetch(
-        `http://127.0.0.1:8000/api/v0.0.24/products/get_product/${product_id}`,
+        `${API_BASE_URL}/api/v0.0.24/products/get_product/${product_id}`,
       );
 
       if (!raw.ok) {

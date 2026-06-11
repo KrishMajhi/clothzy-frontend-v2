@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useAuth } from "./AuthContext";
+import { API_BASE_URL } from "../config/api";
 export const CartContext = createContext(null);
 
 const CartContextProvider = ({ children }) => {
@@ -13,7 +14,7 @@ const CartContextProvider = ({ children }) => {
     setCartLoading(true);
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/v0.0.24/cart/items",
+        `${API_BASE_URL}/api/v0.0.24/cart/items`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (!response.ok) throw new Error("Failed to fetch cart");
@@ -41,7 +42,7 @@ const CartContextProvider = ({ children }) => {
     const token = localStorage.getItem("access_token");
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/v0.0.24/cart/add",
+        `${API_BASE_URL}/api/v0.0.24/cart/add`,
         {
           method: "POST",
           headers: {
@@ -66,7 +67,7 @@ const CartContextProvider = ({ children }) => {
     setCartItems((prev) => prev.filter((item) => item.cart_id !== cart_itemID));
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/api/v0.0.24/cart/${cart_itemID}`,
+        `${API_BASE_URL}/api/v0.0.24/cart/${cart_itemID}`,
         { method: "DELETE", headers: { Authorization: `Bearer ${token}` } }
       );
       if (!response.ok) throw new Error("Failed to remove product");
@@ -87,7 +88,7 @@ const CartContextProvider = ({ children }) => {
     );
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/api/v0.0.24/cart/${cartItemId}`,
+        `${API_BASE_URL}/api/v0.0.24/cart/${cartItemId}`,
         {
           method: "PATCH",
           headers: {
@@ -108,7 +109,7 @@ const CartContextProvider = ({ children }) => {
     const token = localStorage.getItem("access_token");
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/v0.0.24/cart/clear",
+        `${API_BASE_URL}/api/v0.0.24/cart/clear`,
         { method: "DELETE", headers: { Authorization: `Bearer ${token}` } }
       );
       if (!response.ok) throw new Error("Failed to clear cart");
@@ -121,7 +122,7 @@ const CartContextProvider = ({ children }) => {
   const getOrderSummaryConfig = async () => {
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/v0.0.24/cart/summary"
+        `${API_BASE_URL}/api/v0.0.24/cart/summary`
       );
       if (!response.ok) throw new Error("Failed to fetch order config");
       const data = await response.json();

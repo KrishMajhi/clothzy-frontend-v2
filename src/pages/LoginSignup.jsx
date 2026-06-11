@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { API_BASE_URL } from "../config/api";
+
 import { useAuth } from "../Context/AuthContext";
 import Home from "./Home";
 import "./LoginSignup.css";
@@ -67,18 +69,16 @@ function LoginSignup() {
 
     try {
       if (isLogin) {
-        const response = await fetch(
-          "http://127.0.0.1:8000/api/v0.0.24/user/login",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, username, password }),
-          },
-        );
+        const response = await fetch(`${API_BASE_URL}/api/v0.0.24/user/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, username, password }),
+        });
         const data = await response.json();
         if (response.ok) {
           localStorage.setItem("access_token", data.access_token);
           await fetchCurrentUser();
+
           clearForm();
           alert("Login successful!");
         } else {
@@ -86,7 +86,7 @@ function LoginSignup() {
         }
       } else {
         const response = await fetch(
-          "http://127.0.0.1:8000/api/v0.0.24/user/signup",
+          `${API_BASE_URL}/api/v0.0.24/user/signup`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
