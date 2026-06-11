@@ -8,7 +8,7 @@ import AlsoLiked from "./AlsoLiked";
 
 import { ITEMS_PER_PAGE } from "./shopCategoryConstants";
 import "./ShopCategory.css";
-import { useShop } from "../../Context/ShopContext.jsx";
+import { useShop } from "../../context/ShopContext.jsx";
 
 const DEFAULT_MAX_PRICE = 2000;
 

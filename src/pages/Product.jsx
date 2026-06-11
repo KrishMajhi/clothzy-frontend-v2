@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./css/Product.css";
 import { useParams } from "react-router-dom";
-import { useShop } from "../Context/ShopContext";
-import { useCart } from "../Context/CartContext";
+import { useShop } from "../context/ShopContext";
+import { useCart } from "../context/CartContext";
 
 function Product() {
   const { productid } = useParams();

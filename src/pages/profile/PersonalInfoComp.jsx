@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from "../../Context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import "./css/PersonalInfoComp.css";
 
 export default function PersonalInfoComp() {

@@ -4,7 +4,7 @@ import WishlistComp from "./WishlistComp";
 import OrdersComp from "./OrdersComp";
 import SecurityComp from "./SecurityComp";
 import AddressComp from "./AddressComp";
-import "./css/profile.css";
+import "./css/Profile.css";
 
 const sections = [
   { id: "Personal Information", icon: "👤", label: "Personal Information" },

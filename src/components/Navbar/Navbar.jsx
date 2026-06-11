@@ -5,9 +5,9 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import logopic from "../../assets/logo.png";
 import cart_icon from "../../assets/cart_icon.png";
 
-// import { useShop } from "../../Context/ShopContext";
-import { useAuth } from "../../Context/AuthContext";
-import { useCart } from "../../Context/CartContext";
+// import { useShop } from "../../context/ShopContext";
+import { useAuth } from "../../context/AuthContext";
+import { useCart } from "../../context/CartContext";
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },

@@ -1,4 +1,4 @@
-import { useAuth } from "../../Context/AuthContext.jsx";
+import { useAuth } from "../../context/AuthContext.jsx";
 import Field from "./Field";
 import { useEffect } from "react";
 const ContactSection = ({ form, setField, errors, emailOk, setEmailOk }) => {

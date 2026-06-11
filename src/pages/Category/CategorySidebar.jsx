@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { COLOR_PALETTE } from "./shopCategoryConstants";
-import { useShop } from "../../Context/ShopContext";
+import { useShop } from "../../context/ShopContext";
 
 /* ─── Collapsible wrapper ─── */
 function FilterSection({ title, children, defaultOpen = true }) {

@@ -3,8 +3,8 @@ import "./Items.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-// import { useShop } from "../../Context/ShopContext";
-import { useCart } from "../../Context/CartContext";
+// import { useShop } from "../../context/ShopContext";
+import { useCart } from "../../context/CartContext";
 
 function Items({
   Pimg,
