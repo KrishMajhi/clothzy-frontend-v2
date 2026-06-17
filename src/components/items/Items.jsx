@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Items.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 // import { useShop } from "../../context/ShopContext";
 import { useCart } from "../../context/CartContext";
-
+import { useWishlist } from "../../context/WishListContext";
 function Items({
   Pimg,
   Pname,
@@ -17,8 +17,11 @@ function Items({
   colors,
   sizes,
 }) {
+  const { addToWishlist, removeFromWishlist, isWishlisted } = useWishlist();
   const { cartItems, addToCart, removeFromCart } = useCart();
+  const wishactive = isWishlisted(id);
 
+  console.log("Product ID:", id, "Wishlisted:", wishactive);
   const isincart = cartItems.some(
     (item) =>
       item.product_id === id &&
@@ -42,7 +45,14 @@ function Items({
       });
     }
   };
-
+  const handlewishlist = async () => {
+    if (wishactive) {
+      removeFromWishlist(id);
+    } else {
+      addToWishlist(id);
+    }
+  };
+  console.log(`wish-btn ${wishactive ? "activewish" : ""}`);
   return (
     <div className="product-card">
       <div className="product-card-img">
@@ -52,7 +62,12 @@ function Items({
 
         <span className="badge badge-sale">Sale</span>
 
-        <button className="wish-btn">♥</button>
+        <button
+          className={`wish-btn ${wishactive ? "activewish" : ""}`}
+          onClick={handlewishlist}
+        >
+          ♥
+        </button>
 
         <div className="quick-bar">
           <button className="quick-add" onClick={() => handleCartClick(id)}>
