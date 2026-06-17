@@ -9,7 +9,7 @@ import AddressComp from "./AddressComp";
 import WishlistComp from "./WishlistComp";
 import SecurityComp from "./SecurityComp";
 import PrivacyComp from "./PrivacyComp";
-import "./../css/profile.css";
+import "./../css/Profile.css";
 import { useSearchParams } from "react-router-dom";
 
 const sections = [
