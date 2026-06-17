@@ -128,7 +128,7 @@ function CategorySidebar({
   };
 
   return (
-    <aside className="sidebar">
+    <aside className="sidebar-shopcategory">
       {/* Category */}
       <FilterSection title="Category">
         {dataCategoryFilters && dataCategoryFilters.length > 0 ? (

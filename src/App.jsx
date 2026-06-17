@@ -8,7 +8,7 @@ import Product from "./pages/Product";
 import LoginSignup from "./pages/LoginSignup";
 import Navbar from "./components/Navbar/Navbar";
 import Errorcomp from "./components/Errorcomp/comp";
-import Profile from "./pages/profile/Profile";
+import Profile from "./pages/profile/components/Profile";
 
 import CartPage from "./pages/cart/CartPage.jsx";
 import CheckoutPage from "./pages/checkout/CheckoutPage.jsx";

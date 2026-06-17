@@ -1,0 +1,115 @@
+/* ── SecurityComp.css additions for password panel ──
+   Append these rules to your existing SecurityComp.css
+   All classes use the new profile's shared tokens (.view, .section-block, etc.)
+   and only add pw-panel–specific rules. */
+
+.sec-pw-panel {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* input row wrapper (eye button support) */
+.sec-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sec-input-wrap .profile-field-input {
+  flex: 1;
+  padding-right: 36px; /* room for eye btn */
+}
+
+.sec-eye {
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  opacity: .7;
+}
+.sec-eye:hover { opacity: 1; }
+
+.sec-match-icon {
+  position: absolute;
+  right: 36px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* strength bar */
+.sec-strength {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.sec-strength-bar {
+  display: flex;
+  gap: 3px;
+  flex: 1;
+}
+
+.sec-strength-seg {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  transition: background .25s;
+}
+
+.sec-strength-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  min-width: 70px;
+  text-align: right;
+}
+
+/* error */
+.sec-error {
+  font-size: 12px;
+  color: #e57373;
+  margin: 0;
+}
+
+/* success panel */
+.sec-pw-success {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  background: rgba(111, 207, 151, .08);
+  border: 1px solid rgba(111, 207, 151, .25);
+  border-radius: 10px;
+}
+
+.sec-pw-success-icon {
+  font-size: 22px;
+  color: #6fcf97;
+}
+
+/* tips list */
+.sec-tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sec-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  opacity: .8;
+}
+
+.sec-tip-bullet {
+  font-size: 8px;
+  margin-top: 4px;
+  flex-shrink: 0;
+}

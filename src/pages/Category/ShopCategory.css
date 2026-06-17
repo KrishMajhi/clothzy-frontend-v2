@@ -131,7 +131,7 @@
 }
 
 /* ── SIDEBAR ── */
-.sidebar {
+.sidebar-shopcategory {
   position: sticky;
   top: 80px;
   padding: 40px 24px 40px 0;
@@ -985,7 +985,7 @@
     padding: 0 20px 60px;
   }
 
-  .sidebar {
+  .sidebar-shopcategory {
     position: static;
     padding: 24px 0 0;
     display: flex;
