@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import { useAuth } from "../../context/AuthContext";
+// import { useAuth } from "../../../context/AuthContext";
 import { useAuth } from "../../../context/AuthContext";
 
 import "./../css/PrivacyComp.css";
@@ -29,10 +29,10 @@ export default function PrivacyComp() {
 
   return (
     <div className="view">
-      <div className="page-header">
-        <div className="page-eyebrow">ACCOUNT SETTINGS</div>
-        <h1 className="page-title">Privacy & Data</h1>
-        <p className="page-sub">Control how your data is used</p>
+      <div className="profilepage-header">
+        <div className="profilepage-eyebrow">ACCOUNT SETTINGS</div>
+        <h1 className="profilepage-title">Privacy & Data</h1>
+        <p className="profilepage-sub">Control how your data is used</p>
       </div>
 
       <div className="section-block">

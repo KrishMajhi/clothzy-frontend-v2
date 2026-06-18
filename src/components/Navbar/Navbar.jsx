@@ -21,6 +21,7 @@ function Navbar() {
   const { user, logout } = useAuth();
   const location = useLocation();
   if (location.pathname === "/checkout") return null;
+  if (location.pathname === "/profile") return null;
 
   /* ── UI state ─────────────────────────────────────── */
   const [profileOpen, setProfileOpen] = useState(false);
