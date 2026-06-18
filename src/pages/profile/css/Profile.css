@@ -477,6 +477,23 @@ body {
   margin-bottom: 36px;
 }
 
+.orderdetailTopbuttons {
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  outline: hidden;
+  border: none;
+}
+
 .btn {
   padding: 10px 20px;
   border: 1px solid var(--border);
@@ -492,9 +509,20 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+.orderdetailTopbuttons:hover:not(:disabled) {
+  border-color: var(--gold);
+  background: var(--gold-lt);
+}
+
 .btn:hover:not(:disabled) {
   border-color: var(--gold);
   background: var(--gold-lt);
+}
+
+.orderdetailTopbuttons.primary {
+  background: var(--gold);
+  color: var(--white);
+  border-color: var(--gold);
 }
 
 .btn.primary {
@@ -503,9 +531,19 @@ body {
   border-color: var(--gold);
 }
 
+.orderdetailTopbuttons.primary:hover {
+  background: #B8945A;
+  border-color: #B8945A;
+}
+
 .btn.primary:hover {
   background: #B8945A;
   border-color: #B8945A;
+}
+
+.orderdetailTopbuttons.danger {
+  color: var(--red);
+  border-color: var(--red);
 }
 
 .btn.danger {
@@ -513,13 +551,27 @@ body {
   border-color: var(--red);
 }
 
+.orderdetailTopbuttons.danger:hover {
+  background: rgba(192, 57, 43, 0.1);
+}
+
 .btn.danger:hover {
   background: rgba(192, 57, 43, 0.1);
+}
+
+.orderdetailTopbuttons.sm {
+  padding: 7px 14px;
+  font-size: 10px;
 }
 
 .btn.sm {
   padding: 7px 14px;
   font-size: 10px;
+}
+
+.orderdetailTopbuttons:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .btn:disabled {
@@ -528,7 +580,7 @@ body {
 }
 
 /* ── Badge ── */
-.badge {
+.orderrecentbadge {
   display: inline-flex;
   padding: 5px 10px;
   border-radius: 3px;
@@ -539,37 +591,48 @@ body {
   text-transform: uppercase;
 }
 
-.badge.delivered {
+/* .badge {
+  display: inline-flex;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  width: fit-content;
+  text-transform: uppercase;
+} */
+
+.orderrecentbadge.delivered {
   background: rgba(39, 174, 96, 0.1);
   color: var(--green);
 }
 
-.badge.shipped {
+.orderrecentbadge.shipped {
   background: rgba(44, 95, 138, 0.1);
   color: var(--blue);
 }
 
-.badge.processing {
+.orderrecentbadge.processing {
   background: rgba(108, 74, 138, 0.1);
   color: var(--purple);
 }
 
-.badge.pending {
+.orderrecentbadge.pending {
   background: rgba(192, 57, 43, 0.15);
   color: #8B3A1B;
 }
 
-.badge.confirmed {
+.orderrecentbadge.confirmed {
   background: rgba(201, 168, 76, 0.1);
   color: var(--gold);
 }
 
-.badge.refunded {
+.orderrecentbadge.refunded {
   background: rgba(136, 136, 128, 0.1);
   color: var(--muted);
 }
 
-.badge.default-badge {
+.orderrecentbadge.default-badge {
   background: rgba(44, 95, 138, 0.1);
   color: var(--blue);
 }
@@ -1063,6 +1126,7 @@ body {
   gap: 16px;
 }
 
+
 .item-card {
   background: var(--white);
   border: 1px solid var(--border);
@@ -1091,23 +1155,27 @@ body {
   padding: 14px;
 }
 
-.item-name {
+.orderdetailitem-name {
+
   font-size: 12px;
   font-weight: 600;
   color: var(--ink);
   margin-bottom: 10px;
+  font-family: 'Montserrat';
 }
 
-.item-meta {
+.orderdetailitem-meta {
   font-size: 10px;
 }
 
 .item-row {
   display: flex;
   justify-content: space-between;
-  padding: 5px 0;
+  align-items: center;
+
+  padding: 8px 0;
+
   border-bottom: 1px solid var(--border);
-  color: var(--muted);
 }
 
 .item-row:last-child {
@@ -1169,7 +1237,7 @@ body {
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
 }
 
-.price-row {
+.Orderdetailprice-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1178,7 +1246,7 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
-.price-row:last-child {
+.Orderdetailprice-row:last-child {
   border-bottom: none;
 }
 

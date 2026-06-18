@@ -13,10 +13,9 @@ const CartContextProvider = ({ children }) => {
     const token = localStorage.getItem("access_token");
     setCartLoading(true);
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/api/v0.0.24/cart/items`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      const response = await fetch(`${API_BASE_URL}/api/v0.0.24/cart/items`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       if (!response.ok) throw new Error("Failed to fetch cart");
       const data = await response.json();
       setCartItems(data);
@@ -41,17 +40,14 @@ const CartContextProvider = ({ children }) => {
   const addToCart = async (item) => {
     const token = localStorage.getItem("access_token");
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/api/v0.0.24/cart/add`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(item),
-        }
-      );
+      const response = await fetch(`${API_BASE_URL}/api/v0.0.24/cart/add`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(item),
+      });
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.detail || "Failed to add item");
@@ -68,7 +64,7 @@ const CartContextProvider = ({ children }) => {
     try {
       const response = await fetch(
         `${API_BASE_URL}/api/v0.0.24/cart/${cart_itemID}`,
-        { method: "DELETE", headers: { Authorization: `Bearer ${token}` } }
+        { method: "DELETE", headers: { Authorization: `Bearer ${token}` } },
       );
       if (!response.ok) throw new Error("Failed to remove product");
     } catch (error) {
@@ -83,8 +79,8 @@ const CartContextProvider = ({ children }) => {
       prev.map((item) =>
         item.cart_id === cartItemId
           ? { ...item, quantity, subtotal: item.price * quantity }
-          : item
-      )
+          : item,
+      ),
     );
     try {
       const response = await fetch(
@@ -96,7 +92,7 @@ const CartContextProvider = ({ children }) => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ quantity }),
-        }
+        },
       );
       if (!response.ok) throw new Error("Failed to update cart");
     } catch (error) {
@@ -108,10 +104,10 @@ const CartContextProvider = ({ children }) => {
   const clearCart = async () => {
     const token = localStorage.getItem("access_token");
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/api/v0.0.24/cart/clear`,
-        { method: "DELETE", headers: { Authorization: `Bearer ${token}` } }
-      );
+      const response = await fetch(`${API_BASE_URL}/api/v0.0.24/cart/clear`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
       if (!response.ok) throw new Error("Failed to clear cart");
       await fetchCart();
     } catch (error) {
@@ -121,9 +117,7 @@ const CartContextProvider = ({ children }) => {
 
   const getOrderSummaryConfig = async () => {
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/api/v0.0.24/cart/summary`
-      );
+      const response = await fetch(`${API_BASE_URL}/api/v0.0.24/cart/summary`);
       if (!response.ok) throw new Error("Failed to fetch order config");
       const data = await response.json();
       setOrderSummaryConfig(data);
@@ -177,8 +171,10 @@ export const calculateOrderSummary = ({
 
   // Shipping method: standard is always free; express/same_day add extra
   let shippingMethodCharge = 0;
-  if (shippingMethod === "express") shippingMethodCharge = express_shipping_charge;
-  if (shippingMethod === "same_day") shippingMethodCharge = same_day_shipping_charge;
+  if (shippingMethod === "express")
+    shippingMethodCharge = express_shipping_charge;
+  if (shippingMethod === "same_day")
+    shippingMethodCharge = same_day_shipping_charge;
 
   const total = subtotal + tax + deliveryCharge + shippingMethodCharge;
 

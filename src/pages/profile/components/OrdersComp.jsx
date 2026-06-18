@@ -1,44 +1,63 @@
 import { useAuth } from "../../../context/AuthContext";
+import { useOrders } from "../../../context/OrderContext";
 import "../css/OrdersComp.css";
-
 const SPENDING_DATA = [
-  { month: "AUG", val: 4200  },
-  { month: "SEP", val: 7800  },
-  { month: "OCT", val: 3400  },
+  { month: "AUG", val: 4200 },
+  { month: "SEP", val: 7800 },
+  { month: "OCT", val: 3400 },
   { month: "NOV", val: 11200 },
   { month: "DEC", val: 14800 },
-  { month: "JAN", val: 8240  },
+  { month: "JAN", val: 8240 },
 ];
 
 const computeStats = (orders = []) => {
-  const delivered = orders.filter(o => o.status === "delivered").length;
-  const inTransit = orders.filter(o => o.status === "shipped" || o.status === "processing").length;
-  const totalSpent = orders.reduce((sum, o) => {
-    const n = parseInt((o.total || "0").replace(/[₹,]/g, ""));
-    return sum + (isNaN(n) ? 0 : n);
-  }, 0);
-  return { total: orders.length, delivered, inTransit, totalSpent };
+  const delivered = orders.filter((o) => o.status === "delivered").length;
+
+  const pending = orders.filter((o) => o.status === "pending").length;
+
+  const inTransit = orders.filter(
+    (o) =>
+      o.status === "processing" ||
+      o.status === "shipped" ||
+      o.status === "out_for_delivery",
+  ).length;
+
+  const totalSpent = orders.reduce(
+    (sum, o) => sum + Number(o.total_amount || 0),
+    0,
+  );
+
+  return {
+    total: orders.length,
+    delivered,
+    pending,
+    inTransit,
+    totalSpent,
+  };
 };
 
 export default function OrdersComp({ onViewOrder, onViewAll }) {
-  const { user } = useAuth();
+  const { recentOrders } = useOrders();
 
-  const orders  = user?.orders || [];
-  const stats   = computeStats(orders);
-  const recent  = orders.slice(0, 4);
+  const orders = recentOrders || [];
+  const stats = computeStats(orders);
+  const recent = orders.slice(0, 4);
 
-  const totalSpentFmt = stats.totalSpent >= 1000
-    ? `₹${Math.round(stats.totalSpent / 1000)}K`
-    : `₹${stats.totalSpent}`;
+  const totalSpentFmt =
+    stats.totalSpent >= 1000
+      ? `₹${Math.round(stats.totalSpent / 1000)}K`
+      : `₹${stats.totalSpent}`;
 
-  const max = Math.max(...SPENDING_DATA.map(d => d.val));
+  const max = Math.max(...SPENDING_DATA.map((d) => d.val));
 
   return (
     <div className="view">
       <div className="profilepage-header">
         <div className="profilepage-eyebrow">Order Management</div>
         <h1 className="profilepage-title">My Orders</h1>
-        <p className="profilepage-sub">Track, manage, and review all your purchases</p>
+        <p className="profilepage-sub">
+          Track, manage, and review all your purchases
+        </p>
       </div>
 
       {/* ── Stats ── */}
@@ -54,10 +73,17 @@ export default function OrdersComp({ onViewOrder, onViewAll }) {
           <div className="stat-sub">Successfully</div>
         </div>
         <div className="stat-card">
+          <div className="stat-label">Pending</div>
+          <div className="stat-value">{stats.pending}</div>
+          <div className="stat-sub">Awaiting processing</div>
+        </div>
+
+        <div className="stat-card">
           <div className="stat-label">In Transit</div>
           <div className="stat-value">{stats.inTransit}</div>
           <div className="stat-sub">Active now</div>
         </div>
+
         <div className="stat-card">
           <div className="stat-label">Total Spent</div>
           <div className="stat-value">{totalSpentFmt}</div>
@@ -97,7 +123,10 @@ export default function OrdersComp({ onViewOrder, onViewAll }) {
       <div className="section-block">
         <div className="section-header">
           <div className="section-title">Recent Orders</div>
-          <button className="section-action" onClick={() => onViewAll && onViewAll()}>
+          <button
+            className="section-action"
+            onClick={() => onViewAll && onViewAll()}
+          >
             VIEW ALL →
           </button>
         </div>
@@ -106,33 +135,42 @@ export default function OrdersComp({ onViewOrder, onViewAll }) {
           <div className="empty-state">
             <div className="empty-icon">📦</div>
             <div className="empty-title">No orders yet</div>
-            <div className="empty-sub">Start shopping to see your orders here.</div>
+            <div className="empty-sub">
+              Start shopping to see your orders here.
+            </div>
           </div>
         ) : (
           <div className="order-preview-list">
-            {recent.map(o => (
+            {recent.map((o) => (
               <div
                 key={o.id}
                 className="order-preview"
-                onClick={() => onViewOrder && onViewOrder(o.id)}
+                onClick={() => onViewOrder && onViewOrder(o.id,o.order_number)}
               >
-                {o.img && (
+                {o.thumbnail && (
                   <img
                     className="order-preview-img"
-                    src={o.img}
+                    src={o.thumbnail}
                     alt={o.id}
-                    onError={e => { e.target.style.display = "none"; }}
+                    onError={(e) => {
+                      e.target.style.display = "none";
+                    }}
                   />
                 )}
                 <div className="order-preview-id">{o.id}</div>
-                <div className="order-preview-date">{o.date}</div>
+                <div className="order-preview-date">
+                  {new Date(o.created_at).toLocaleDateString()}
+                </div>
                 <div className="order-preview-items">
-                  {o.itemsCount} item{o.itemsCount > 1 ? "s" : ""} · {o.paymentMethod}
+                  {o.item_count} item {o.item_count > 1 ? "s" : ""} ·{" "}
+                  {o.payment_method}
                 </div>
                 <div>
-                  <span className={`badge ${o.status}`}>{o.status.replace(/_/g, " ")}</span>
+                  <span className={`orderrecentbadge ${o.status}`}>
+                    {o.status.replace(/_/g, " ")}
+                  </span>
                 </div>
-                <div className="order-preview-total">{o.total}</div>
+                <div className="order-preview-total">{o.total_amount}</div>
                 <div className="order-preview-arrow">→</div>
               </div>
             ))}
