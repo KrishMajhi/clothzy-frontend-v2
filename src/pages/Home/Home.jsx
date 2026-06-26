@@ -14,7 +14,7 @@ import StatsStrip from "./components/StatsStrip/StatsStrip";
 import StyleJournal from "./components/StyleJournal/StyleJournal";
 import Testimonials from "./components/Testimonials/Testimonials";
 import Newsletter from "./components/Newsletter/Newsletter";
-import Footer from "./components/Footer/Footer";
+import Footer from "../../components/Footer/Footer";
 import useScrollReveal from "./components/useScrollReveal";
 import useMagneticButtons from "./components/useMagneticButtons";
 import "./clzv3-globals.css";
