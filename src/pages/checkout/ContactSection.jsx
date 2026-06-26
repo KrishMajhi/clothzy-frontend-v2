@@ -1,20 +1,28 @@
+import { useEffect } from "react";
 import { useAuth } from "../../context/AuthContext.jsx";
 import Field from "./Field";
-import { useEffect } from "react";
+
 const ContactSection = ({ form, setField, errors, emailOk, setEmailOk }) => {
   const { user } = useAuth();
 
-  // Pre-fill once on mount
+  // Pre-fill form from user profile on mount.
+  // We write into the form so the user can edit the values freely.
+  // If they clear a field the submit logic will fall back to the saved value.
   useEffect(() => {
-    if (user?.personal_info) {
-      const { fullname, email, phone } = user.personal_info;
-      const [firstName = "", lastName = ""] = (fullname || "").split(" ");
-      if (firstName) setField("firstName", firstName);
-      if (lastName) setField("lastName", lastName);
-      if (email) setField("email", email);
-      if (phone) setField("phone", phone);
-    }
-  }, []);
+    if (!user?.personal_info) return;
+    const { fullname, email, phone } = user.personal_info;
+    const [firstName = "", ...rest] = (fullname || "").split(" ");
+    const lastName = rest.join(" ");
+
+    if (firstName) setField("firstName", firstName);
+    if (lastName)  setField("lastName",  lastName);
+    if (email)     setField("email",      email);
+    if (phone)     setField("phone",      phone);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const savedInfo = user?.personal_info ?? {};
+  const [savedFirst = "", ...savedRest] = (savedInfo.fullname || "").split(" ");
+  const savedLast = savedRest.join(" ");
 
   return (
     <div className="co-card">
@@ -22,27 +30,29 @@ const ContactSection = ({ form, setField, errors, emailOk, setEmailOk }) => {
         <div className="co-section-num">1</div>
         <h2 className="co-section-title">Contact Information</h2>
       </div>
+
       <div className="co-row co-row--2">
         <Field
           label="First Name"
-          placeholder="Arjun"
+          placeholder={savedFirst || "Arjun"}
           value={form.firstName}
           onChange={(v) => setField("firstName", v)}
           error={errors.firstName}
         />
         <Field
           label="Last Name"
-          placeholder="Sharma"
+          placeholder={savedLast || "Sharma"}
           value={form.lastName}
           onChange={(v) => setField("lastName", v)}
           error={errors.lastName}
         />
       </div>
+
       <div className="co-row">
         <Field
           label="Email Address"
           type="email"
-          placeholder="arjun@example.com"
+          placeholder={savedInfo.email || "arjun@example.com"}
           value={form.email}
           onChange={(v) => {
             setField("email", v);
@@ -52,11 +62,12 @@ const ContactSection = ({ form, setField, errors, emailOk, setEmailOk }) => {
           showCheck={emailOk}
         />
       </div>
+
       <div className="co-row">
         <Field
           label="Phone Number"
           type="tel"
-          placeholder="+91 98765 43210"
+          placeholder={savedInfo.phone || "+91 98765 43210"}
           value={form.phone}
           onChange={(v) => setField("phone", v)}
           error={errors.phone}
@@ -65,4 +76,5 @@ const ContactSection = ({ form, setField, errors, emailOk, setEmailOk }) => {
     </div>
   );
 };
+
 export default ContactSection;

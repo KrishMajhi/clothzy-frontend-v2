@@ -1,0 +1,113 @@
+/* ============================================
+   CLOTHZY REDESIGN V3 — GLOBAL VARIABLES & RESET
+   Prefix convention: clzv3- (Clothzy v3)
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --clzv3-cream: #F4EFE6;
+  --clzv3-ink: #1C1C1A;
+  --clzv3-rust: #C0612F;
+  --clzv3-sand: #D0BFA4;
+  --clzv3-warm: #FAFAF7;
+  --clzv3-muted: #78726A;
+  --clzv3-light-sand: #E8E0D4;
+
+  /* Height of your existing fixed navbar — adjust this one value
+     if your navbar is taller/shorter, and every section below
+     will clear it correctly. */
+  --clzv3-navbar-offset: 88px;
+}
+
+.clzv3-root,
+.clzv3-root *,
+.clzv3-root *::before,
+.clzv3-root *::after {
+  box-sizing: border-box;
+}
+
+.clzv3-root {
+  margin: 0;
+  padding: 0;
+}
+
+.clzv3-root h1,
+.clzv3-root h2,
+.clzv3-root h3,
+.clzv3-root h4,
+.clzv3-root p,
+.clzv3-root ul,
+.clzv3-root figure {
+  margin: 0;
+  padding: 0;
+}
+
+.clzv3-root {
+  background: var(--clzv3-cream);
+  color: var(--clzv3-ink);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+.clzv3-root img { display: block; }
+.clzv3-root a { text-decoration: none; }
+.clzv3-root ul { list-style: none; }
+
+/* ─── Reveal-on-scroll utility ─────────────── */
+.clzv3-rv {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.clzv3-rv.clzv3-in { opacity: 1; transform: none; }
+.clzv3-d1 { transition-delay: .1s; }
+.clzv3-d2 { transition-delay: .2s; }
+.clzv3-d3 { transition-delay: .3s; }
+.clzv3-d4 { transition-delay: .4s; }
+
+/* ─── Shared section heading utilities ─────── */
+.clzv3-eyebrow {
+  font-family: 'Bebas Neue';
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--clzv3-rust);
+  margin-bottom: 9px;
+}
+.clzv3-sec-h {
+  font-family: 'Cormorant Garamond';
+  font-weight: 300;
+  font-size: clamp(30px, 3.5vw, 46px);
+  color: var(--clzv3-ink);
+  line-height: 1.1;
+}
+.clzv3-sec-h em { font-style: italic; }
+
+.clzv3-btn-all {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--clzv3-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: none;
+  transition: color .2s;
+  background: none;
+  border: none;
+}
+.clzv3-btn-all:hover { color: var(--clzv3-ink); }
+.clzv3-btn-all svg { transition: transform .2s; }
+.clzv3-btn-all:hover svg { transform: translateX(4px); }
+
+/* ─── Responsive paddings shared by several sections ─── */
+@media (max-width: 1024px) {
+  .clzv3-pad-section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}

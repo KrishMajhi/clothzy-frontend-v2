@@ -1,0 +1,33 @@
+/* ============================================
+   MARQUEE
+   ============================================ */
+.clzv3-marquee {
+  background: var(--clzv3-ink);
+  padding: 12px 0;
+  overflow: hidden;
+}
+
+.clzv3-marquee-track {
+  display: flex;
+  animation: clzv3MarqueeScroll 28s linear infinite;
+  white-space: nowrap;
+}
+
+.clzv3-marquee-track span {
+  font-family: 'Bebas Neue';
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: rgba(208, 191, 164, .5);
+  padding: 0 28px;
+}
+
+.clzv3-marquee-track span.clzv3-marquee-accent {
+  color: var(--clzv3-rust);
+  font-size: 9px;
+  padding: 0 6px;
+}
+
+@keyframes clzv3MarqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

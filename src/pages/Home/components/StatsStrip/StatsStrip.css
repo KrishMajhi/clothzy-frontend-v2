@@ -1,0 +1,52 @@
+/* ============================================
+   STATS STRIP
+   ============================================ */
+.clzv3-stats {
+  background: var(--clzv3-ink);
+  padding: 68px 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.clzv3-stat {
+  text-align: center;
+  padding: 0 12px;
+  border-right: 1px solid rgba(255, 255, 255, .07);
+}
+.clzv3-stat:last-child {
+  border-right: none;
+}
+
+.clzv3-stat-num {
+  font-family: 'Bebas Neue';
+  font-size: clamp(40px, 5vw, 66px);
+  color: var(--clzv3-cream);
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.clzv3-stat-num.clzv3-stat-num-rust {
+  color: var(--clzv3-rust);
+}
+
+.clzv3-stat-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--clzv3-muted);
+}
+
+@media (max-width: 1024px) {
+  .clzv3-stats {
+    grid-template-columns: 1fr 1fr;
+    padding: 52px 24px;
+  }
+  .clzv3-stat {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, .07);
+    padding: 26px 0;
+  }
+  .clzv3-stat:last-child {
+    border-bottom: none;
+  }
+}

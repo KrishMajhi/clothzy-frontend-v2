@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { API_BASE_URL } from "../config/api";
 
 import { useAuth } from "../context/AuthContext";
-import Home from "./Home";
+
 import "./LoginSignup.css";
 import { useShop } from "../context/ShopContext";
+import Home from "./Home/Home";
 function getStrength(val) {
   let score = 0;
   if (val.length >= 8) score++;

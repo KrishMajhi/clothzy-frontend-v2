@@ -1,0 +1,178 @@
+/* ============================================
+   PRODUCT CARD (shared by carousel + grid)
+   ============================================ */
+.clzv3-product-card {
+  flex: 0 0 272px;
+  scroll-snap-align: start;
+}
+
+.clzv3-product-card.clzv3-product-card-grid {
+  flex: unset;
+}
+
+.clzv3-pc-image-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: var(--clzv3-light-sand);
+  margin-bottom: 14px;
+}
+
+.clzv3-pc-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(6%);
+  transition: transform .55s;
+  pointer-events: none;
+}
+.clzv3-product-card:hover .clzv3-pc-image-wrap img {
+  transform: scale(1.06);
+}
+
+.clzv3-pc-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  background: var(--clzv3-rust);
+  color: #fff;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 9px;
+}
+
+.clzv3-pc-wishlist-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(244, 239, 230, .85);
+  backdrop-filter: blur(4px);
+  border: none;
+  cursor: none;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: scale(.7);
+  transition: opacity .3s, transform .3s;
+}
+.clzv3-product-card:hover .clzv3-pc-wishlist-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.clzv3-pc-quickadd-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(28, 28, 26, .92);
+  color: var(--clzv3-cream);
+  border: none;
+  cursor: none;
+  padding: 12px;
+  font-family: 'DM Sans';
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transform: translateY(100%);
+  transition: transform .3s, background .2s;
+}
+.clzv3-product-card:hover .clzv3-pc-quickadd-btn {
+  transform: translateY(0);
+}
+.clzv3-pc-quickadd-btn:hover {
+  background: var(--clzv3-rust);
+}
+
+.clzv3-pc-category {
+  font-size: 9.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--clzv3-muted);
+  margin-bottom: 5px;
+}
+
+.clzv3-pc-name {
+  font-family: 'Cormorant Garamond';
+  font-size: 18px;
+  color: var(--clzv3-ink);
+  margin-bottom: 9px;
+  line-height: 1.2;
+}
+
+.clzv3-pc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 9px;
+}
+
+.clzv3-pc-price {
+  font-family: 'Bebas Neue';
+  font-size: 20px;
+  color: var(--clzv3-ink);
+  letter-spacing: .5px;
+}
+
+.clzv3-pc-price-original {
+  font-family: 'Bebas Neue';
+  font-size: 14px;
+  color: var(--clzv3-sand);
+  text-decoration: line-through;
+  margin-right: 5px;
+}
+
+.clzv3-pc-discount {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--clzv3-rust);
+  letter-spacing: 1px;
+  background: rgba(192, 97, 47, .1);
+  padding: 2px 6px;
+}
+
+.clzv3-pc-rating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.clzv3-pc-stars {
+  color: var(--clzv3-rust);
+  font-size: 11px;
+  letter-spacing: -1.5px;
+}
+
+.clzv3-pc-rating-count {
+  font-size: 9.5px;
+  color: var(--clzv3-muted);
+}
+
+.clzv3-pc-swatches {
+  display: flex;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.clzv3-pc-swatch {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, .12);
+  cursor: none;
+  transition: transform .2s;
+}
+.clzv3-pc-swatch:hover {
+  transform: scale(1.4);
+}
+.clzv3-pc-swatch.clzv3-pc-swatch-active {
+  box-shadow: 0 0 0 2px var(--clzv3-cream), 0 0 0 3px var(--clzv3-ink);
+}

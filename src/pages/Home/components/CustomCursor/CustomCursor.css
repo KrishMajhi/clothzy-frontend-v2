@@ -1,0 +1,36 @@
+/* ============================================
+   CUSTOM CURSOR
+   ============================================ */
+.clzv3-cursor-dot {
+  position: fixed;
+  width: 7px;
+  height: 7px;
+  background: var(--clzv3-ink);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform .15s;
+}
+
+.clzv3-cursor-ring {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(28, 28, 26, .3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width .25s, height .25s, border-color .25s;
+}
+
+.clzv3-root.clzv3-hov .clzv3-cursor-dot {
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.clzv3-root.clzv3-hov .clzv3-cursor-ring {
+  width: 46px;
+  height: 46px;
+  border-color: var(--clzv3-rust);
+}

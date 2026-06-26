@@ -1,0 +1,108 @@
+/* ============================================
+   CATEGORY TILES
+   ============================================ */
+.clzv3-categories {
+  padding: 80px 64px;
+}
+
+.clzv3-sec-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 36px;
+}
+
+.clzv3-cat-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 16px;
+  height: 520px;
+}
+
+.clzv3-cat-card {
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+}
+
+.clzv3-cat-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(10%) brightness(.84);
+  transition: transform .6s, filter .6s;
+}
+.clzv3-cat-card:hover img {
+  transform: scale(1.05);
+  filter: sepia(5%) brightness(.75);
+}
+
+.clzv3-cat-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(28, 28, 26, .72) 0%, rgba(28, 28, 26, .1) 55%, transparent 100%);
+}
+
+.clzv3-cat-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px 26px;
+}
+
+.clzv3-cat-info-sub {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(244, 239, 230, .55);
+  margin-bottom: 6px;
+}
+
+.clzv3-cat-info-name {
+  font-family: 'Cormorant Garamond';
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 300;
+  color: var(--clzv3-cream);
+  line-height: 1.0;
+}
+
+.clzv3-cat-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(244, 239, 230, .6);
+  border-bottom: 1px solid rgba(244, 239, 230, .25);
+  padding-bottom: 2px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .3s, transform .3s;
+}
+.clzv3-cat-card:hover .clzv3-cat-cta {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 1024px) {
+  .clzv3-categories {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .clzv3-cat-grid {
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+  }
+  .clzv3-cat-card {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+@media (max-width: 600px) {
+  .clzv3-cat-grid {
+    grid-template-columns: 1fr;
+  }
+}

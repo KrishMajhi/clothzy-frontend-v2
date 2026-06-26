@@ -11,7 +11,9 @@ const OrderContextProvider = ({ children }) => {
 
   const getAuthHeaders = () => {
     const token = localStorage.getItem("access_token");
-
+    if (!token) {
+      throw new Error("Please login");
+    }
     return {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
@@ -22,11 +24,14 @@ const OrderContextProvider = ({ children }) => {
     setOrderLoading(true);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v0.0.24/orders`, {
-        method: "POST",
-        headers: getAuthHeaders(),
-        body: JSON.stringify(orderData),
-      });
+      const response = await fetch(
+        `${API_BASE_URL}/api/v0.0.24/orders/createOrder`,
+        {
+          method: "POST",
+          headers: getAuthHeaders(),
+          body: JSON.stringify(orderData),
+        },
+      );
 
       if (!response.ok) {
         const error = await response.json();
@@ -45,7 +50,7 @@ const OrderContextProvider = ({ children }) => {
     setOrderLoading(true);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v0.0.24/orders`, {
+      const response = await fetch(`${API_BASE_URL}/api/v0.0.24/orders/allOrders`, {
         headers: getAuthHeaders(),
       });
 
@@ -151,7 +156,7 @@ const OrderContextProvider = ({ children }) => {
     fetchOrders,
     fetchRecentOrders,
     fetchOrderById,
-    downloadInvoice
+    downloadInvoice,
   };
 
   return (

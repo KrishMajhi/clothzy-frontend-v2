@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
+
 import ShopCategory from "./pages/Category/ShopCategory";
 import Product from "./pages/Product";
 // import Cart from "./pages/Cart";
@@ -12,6 +13,8 @@ import Profile from "./pages/profile/components/Profile";
 
 import CartPage from "./pages/cart/CartPage.jsx";
 import CheckoutPage from "./pages/checkout/CheckoutPage.jsx";
+import OrderConfirmationPage from "./pages/order-confirmation/OrderConfirmationPage.jsx";
+import Home from "./pages/Home/Home.jsx";
 // ✅ Unsplash direct URLs — no imports needed
 // const mens_banner =
 // "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=1100&h=300&fit=crop";
@@ -49,6 +52,7 @@ function App() {
           </Route>
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
           <Route path="/login" element={<LoginSignup />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>

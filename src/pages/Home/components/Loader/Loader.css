@@ -1,0 +1,44 @@
+/* ============================================
+   LOADER / PRELOADER
+   ============================================ */
+.clzv3-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--clzv3-ink);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform .85s cubic-bezier(.76, 0, .24, 1) .15s;
+}
+
+.clzv3-loader.clzv3-loader-out {
+  transform: translateY(-100%);
+}
+
+.clzv3-loader-word {
+  font-family: 'Bebas Neue';
+  font-size: 56px;
+  letter-spacing: 14px;
+  color: var(--clzv3-cream);
+  animation: clzv3LoaderFade .65s ease forwards;
+}
+
+.clzv3-loader-bar {
+  height: 1px;
+  background: var(--clzv3-rust);
+  margin-top: 20px;
+  animation: clzv3LoaderBar .8s .1s ease forwards;
+  width: 0;
+}
+
+@keyframes clzv3LoaderFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes clzv3LoaderBar {
+  from { width: 0; }
+  to { width: 96px; }
+}

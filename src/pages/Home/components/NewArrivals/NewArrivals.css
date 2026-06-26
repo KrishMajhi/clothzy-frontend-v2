@@ -1,0 +1,40 @@
+/* ============================================
+   NEW ARRIVALS — drag carousel
+   ============================================ */
+.clzv3-new-arrivals {
+  padding: 0 64px 80px;
+}
+
+.clzv3-new-arrivals-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 36px;
+}
+
+.clzv3-carousel-outer {
+  position: relative;
+}
+
+.clzv3-carousel-track {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 20px;
+  cursor: grab;
+}
+.clzv3-carousel-track:active {
+  cursor: grabbing;
+}
+.clzv3-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .clzv3-new-arrivals {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}

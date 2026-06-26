@@ -1,0 +1,112 @@
+/* ============================================
+   FEATURE BANNER (Exclusive Offers)
+   ============================================ */
+.clzv3-feature-banner {
+  margin: 0 64px 80px;
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.clzv3-fb-bg {
+  position: absolute;
+  inset: 0;
+}
+.clzv3-fb-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(12%) brightness(.55);
+  transition: transform 7s;
+}
+.clzv3-feature-banner:hover .clzv3-fb-bg img {
+  transform: scale(1.04);
+}
+
+.clzv3-fb-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(28, 28, 26, .94) 0%, rgba(28, 28, 26, .6) 48%, rgba(28, 28, 26, .05) 100%);
+}
+
+.clzv3-fb-content {
+  position: relative;
+  z-index: 1;
+  padding: 72px 72px;
+}
+
+.clzv3-fb-eyebrow {
+  font-family: 'Bebas Neue';
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--clzv3-rust);
+  margin-bottom: 16px;
+}
+
+.clzv3-fb-heading {
+  font-family: 'Cormorant Garamond';
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 58px);
+  color: var(--clzv3-cream);
+  line-height: 1.06;
+  margin-bottom: 20px;
+}
+.clzv3-fb-heading em {
+  font-style: italic;
+  color: var(--clzv3-sand);
+}
+
+.clzv3-fb-text {
+  font-size: 13px;
+  color: rgba(208, 191, 164, .65);
+  line-height: 1.85;
+  max-width: 340px;
+  margin-bottom: 38px;
+}
+
+.clzv3-btn-outline {
+  border: 1px solid rgba(208, 191, 164, .35);
+  color: var(--clzv3-cream);
+  font-family: 'DM Sans';
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  display: inline-block;
+  cursor: none;
+  transition: background .25s, border-color .25s;
+}
+.clzv3-btn-outline:hover {
+  background: var(--clzv3-rust);
+  border-color: var(--clzv3-rust);
+}
+
+.clzv3-fb-ghost-text {
+  position: absolute;
+  right: 56px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Bebas Neue';
+  font-size: 200px;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(208, 191, 164, .06);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -6px;
+}
+
+@media (max-width: 1024px) {
+  .clzv3-feature-banner {
+    margin: 0 0 60px;
+  }
+  .clzv3-fb-content {
+    padding: 50px 36px;
+  }
+  .clzv3-fb-ghost-text {
+    display: none;
+  }
+}

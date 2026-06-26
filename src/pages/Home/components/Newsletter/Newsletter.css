@@ -1,0 +1,88 @@
+/* ============================================
+   NEWSLETTER
+   ============================================ */
+.clzv3-newsletter {
+  background: var(--clzv3-ink);
+  padding: 80px 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.clzv3-newsletter-intro .clzv3-eyebrow {
+  margin-bottom: 12px;
+}
+
+.clzv3-newsletter-heading {
+  font-family: 'Cormorant Garamond';
+  font-weight: 300;
+  font-size: clamp(28px, 3.5vw, 46px);
+  color: var(--clzv3-cream);
+  line-height: 1.1;
+}
+.clzv3-newsletter-heading em {
+  font-style: italic;
+  color: var(--clzv3-sand);
+}
+
+.clzv3-newsletter-subtext {
+  font-size: 13px;
+  color: var(--clzv3-muted);
+  line-height: 1.85;
+  margin-top: 14px;
+}
+
+.clzv3-newsletter-form input {
+  display: block;
+  width: 100%;
+  background: rgba(255, 255, 255, .05);
+  border: none;
+  border-bottom: 1px solid rgba(208, 191, 164, .18);
+  padding: 14px 0;
+  color: var(--clzv3-cream);
+  font-family: 'DM Sans';
+  font-size: 13px;
+  outline: none;
+  transition: border-color .3s;
+  margin-bottom: 16px;
+}
+.clzv3-newsletter-form input::placeholder {
+  color: rgba(120, 114, 106, .55);
+}
+.clzv3-newsletter-form input:focus {
+  border-color: var(--clzv3-rust);
+}
+
+.clzv3-newsletter-form button {
+  width: 100%;
+  background: var(--clzv3-rust);
+  border: none;
+  cursor: none;
+  color: #fff;
+  font-family: 'DM Sans';
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 15px;
+  transition: opacity .2s;
+}
+.clzv3-newsletter-form button:hover {
+  opacity: .86;
+}
+
+.clzv3-newsletter-note {
+  font-size: 9.5px;
+  color: rgba(120, 114, 106, .5);
+  margin-top: 12px;
+  letter-spacing: .4px;
+}
+
+@media (max-width: 1024px) {
+  .clzv3-newsletter {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 56px 24px;
+  }
+}
